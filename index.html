@@ -1,0 +1,102 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <style media="screen">
+        input {
+            height: 40px;
+            padding: 7px;
+        }
+
+        fieldset {
+            margin-bottom: 20px; 
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Local Storage - JavaScript Dcode</h1>
+        <hr>
+
+        <fieldset>
+            <legend>Insert Data</legend>
+            <input id="inpKey" type="text" placeholder="Enter key...">
+            <input id="inpValue" type="text" placeholder="Enter value...">
+            <button class="btn btn-primary" type="button" id="btnInsert">Post Data</button>
+        </fieldset>
+
+        <fieldset>
+            <legend>Local Storage</legend>
+            <div class="output">
+
+            </div>
+
+        </fieldset>
+
+
+    </div>
+
+
+
+</body>
+
+    <script type="text/javascript">
+        console.log(localStorage);
+
+        // let info = {
+        //     'flight': 777,
+        //     'company': 'United',
+        //     'Passager': 100
+        // }
+
+        // localStorage.setItem('name', 'Kevin');
+        // localStorage.setItem('address', '111 King St');
+        // localStorage.setItem(JSON.stringify(info));
+        // console.log(localStorage.key(1));
+        // localStorage.removeItem('name');
+
+        const inpKey = document.getElementById('inpKey');
+
+        const inpValue = document.getElementById('inpValue');
+
+        const btnInsert = document.getElementById('btnInsert');
+
+        const output = document.getElementById('output');
+
+        btnInsert.onclick = function() {
+            const key = inpKey.value;
+
+            const value = inpValue.value;
+
+            // console.log(key);
+            // console.log(value);
+            
+            if (key && value) {
+                localStorage.setItem(key, value);
+                location.reload();
+            }
+        };
+        
+        for(let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+
+            const value = localStorage.getItem(key);
+
+            if (document.getElementById('output') === null) {
+             output.innerHTML += `${key}: ${value} <br />`;
+            }
+
+        }
+
+
+    </script> 
+
+</html>
